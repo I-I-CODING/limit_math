@@ -1,0 +1,150 @@
+\documentclass[UTF8, a4paper, 12pt]{ctexart}
+\setCJKmainfont{Noto Serif CJK SC}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\setlength{\parindent}{0pt}
+\pagestyle{plain}
+
+\begin{document}
+
+\title{高阶导数}
+\date{}
+\maketitle
+
+\section{高阶导数的定义}
+
+\[f''(x) = \lim_{\Delta x \to 0}\frac{f'(x + \Delta x) - f'(x)}{\Delta x}\]
+
+可记为：
+\[f''(x), y'', \frac{d^2y}{dx^2}, \frac{d^2f(x)}{dx^2}\]
+
+n阶导数的拉格朗日记法：
+\[f^{n}(x), y^{n}(x)\]
+
+\section{高阶导数的计算}
+\subsection{直接法}
+
+eg.1
+\[y^{(n)} = (e^{\lambda x})^{(n)} = \lambda^n e^{\lambda x} \quad n = 0, 1, 2, \dots \]
+
+eg.2
+\[\sin(\omega x) ^ n = \omega ^ n \sin(\omega x + n\frac{\pi}{2}) \quad n = 0, 1, 2, \dots\]
+\[\sin(x)^n = \sin(x + n\frac{\pi}{2}) \quad n = 0, 1, 2, \dots \]
+\[\cos(x)^n = \cos(x + n\frac{\pi}{2}) \quad n = 0, 1, 2, \dots \]
+\[\cos(\omega x) ^ n = \omega ^ n \cos(\omega x + n\frac{\pi}{2}) \quad n = 0, 1, 2, \dots\]
+eg.3
+
+\subsubsection{第一组结论：}
+\[f(x) = a_0x^n + a_1x^{n - 1} + \dots + a_{n -1}x + a_n\]
+\[f^{n}(x) = a_0n! \qquad f^{k}(x) = 0, (k > n)\]
+
+\subsubsection{第二组结论：}
+\[
+(x^m)^{(n)} =
+\begin{cases}
+m(m - 1)\dots(m - n + 1)x^{m - n} & n < m \\
+n! & n = m \\
+0 & n > m
+\end{cases}
+\]
+
+\subsubsection{第三组结论}
+
+对于：
+\[y = (x+c)^{\mu}\]
+
+有：
+\[y^{(n)} = \mu(\mu - 1)(\mu - 2)\dots(\mu - n + 1)(x + c)^{\mu - n} \quad (n = 1, 2, \dots)\]
+
+当$\mu = 1$时：
+\[(\frac{1}{x+c})^{(n)} = \frac{(-1)^nn!}{(x+c)^{(n+1)}}\]
+
+对于对数：
+\[[ln(1+x)]^{(n)} = (\frac{1}{1+x})^{(n-1)} = \frac{(-1)^{n-1}(n-1)!}{(1+x)^n}\]
+
+eg.4
+
+设$y = f(\ln x)^{2}$, 求$y''$.
+
+解：
+
+$y'  = 2f(\ln x) \cdot f'(\ln x) \cdot \frac{1}{x}$
+
+$y'' = [2f(\ln x)]' \cdot f'(\ln x) \cdot \frac{1}{x} + 2f(\ln x) \cdot [f'(\ln x)]' \cdot \frac{1}{x} + 2f(\ln x) \cdot f'(\ln x) \cdot [\frac{1}{x}]'$
+
+\subsection{补充公式：}
+\[(a^{x})^{(n)} = a^{x}(\ln a)^{n} \quad (a > 0)\]
+\[(\frac{1}{ax + b})^{(n)} = \frac{(-1)^{n}n!a^{n}}{(ax + b)^{n + 1}} \quad (a \neq 0)\]
+
+\subsection{间接法}
+设$\mu = \mu (x) , \nu = \nu (x)$ 具有n阶导数, 则
+
+\begin{align}
+(\mu \pm \nu)^{(n)} &= \mu^{(n)} \pm \nu^{(n)} \\
+(c\mu)^{(n)} &= c\mu^{(n)} \quad (c\in\mathbb{R}) \\
+(\mu \nu)^{(n)} &= \sum_{k = 0}^n \binom{n}{k} \mu^{(n - k)} \nu^{(k)} \\
+(\mu + \nu)^n &= \sum_{k=0}^n \binom{n}{k}\,\mu^{\,n-k}\nu^{\,k}
+\end{align}
+
+
+eg.1
+
+求$y = \frac{x}{x^2 - 1}$的n阶导数
+\begin{align*}
+y &= \frac{x}{(x+1)(x-1)} \\
+  &= \frac{1}{2}\left(\frac{1}{x+1} + \frac{1}{x-1}\right) \\
+\therefore\quad y^{(n)} &= \frac{1}{2}\left((\tfrac{1}{x+1})^{(n)} + (\tfrac{1}{x-1})^{(n)}\right) \\
+  &= \frac{1}{2}\left(\frac{(-1)^n n!}{(x+1)^{(n+1)}} + \frac{(-1)^n n!}{(x-1)^{(n+1)}}\right)
+\end{align*}
+
+eg.2
+
+求$y = (\sin x)^6 + (\cos x)^6$的n阶导数
+\begin{align*}
+y &= (\sin^2 x)^3 + (\cos^2 x)^3 \\
+    &= (\sin^2 x + \cos^2 x)(\sin^4 x - \sin^2 x \cos^2 x + \cos^4 x) \quad \text{(立方和公式)}\\
+    &= (\sin^2 x + \cos^2 x)^2 - 3\sin^2 x \cos^2 x   \quad \text{(展开)}\\
+    &= 1- \tfrac{3}{4}\sin^2 2x    \quad \text{(二倍角公式)}\\
+  &= \frac{5}{8} + \frac{3}{8}\cos 4x   \quad \text{(后续带公式)}
+\end{align*}
+
+eg.3
+
+已知$y = \arctan x$, 求$y^{(n)}(0), n > 1$
+
+\begin{align*}
+y' = \frac{1}{1 + x^2} \\
+\intertext{整理得：}
+(1 + x^2)y' = 1 \\
+\intertext{对等式两边同时求n阶导，由莱布尼兹公式：}
+\sum_{k = 0}^n \binom{n}{k} (1 + x^2 )^{(k)}y^{(n -k + 1)} = 0 \\
+\intertext{仅当 $k=0,1,2$ 时，$(1 + x^2)^{(k)}\neq 0$}
+\binom{n}{0} (1 + x^2)y^{(n+1)} + \binom{n}{1}(2x)y^{(n)} + \binom{n}{2}(2)y^{(n - 1)} = 0 \\
+\intertext{简化得: } \\
+(1+x^2)y^{(n+1)} + 2nxy^{(n)} + n(n - 1)y^{(n - 1)} = 0 \\
+\intertext{令$x = 0$, 代入得：} \\
+y^{(n+1)}(0) = -n(n - 1)y^{(n -1)}(0) \\
+\intertext{令$a_m = y^{(m)}(0)$, 则递推关系为：} \\
+a_m = -(m - 1)(m - 2)a_{m - 2}\quad m\geq 2 \\
+a_0 = y(0) = \arctan(0) = 0,a_1 = y'(0) = 1 \\
+\intertext{当m为偶数时,} \\
+a_m = 0; \\
+\intertext{当m为奇数时, } \\
+a_m = (-1)^{\frac{m-1}{2}}(m -1)! \\
+\intertext{当 $n > 1$ 时:}
+y^{(n)}(0) =
+\begin{cases}
+0, & \text{若 $n$ 为偶数},\\
+(-1)^{\frac{n-1}{2}}(n - 1)!, & \text{若 $n$ 为奇数}.
+\end{cases}
+\end{align*}
+
+\subsubsection{莱布尼兹公式的使用建议}
+\begin{enumerate}
+  \item 求两个函数乘积的高阶导数
+  \item 建议一个是幂函数或多项式函数
+\end{enumerate}
+
+\end{document}
